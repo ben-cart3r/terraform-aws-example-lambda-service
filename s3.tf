@@ -2,6 +2,8 @@
 module "bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
+  create_bucket = var.create
+
   bucket = "${var.name_prefix}-object-store"
   acl    = "private"
 
