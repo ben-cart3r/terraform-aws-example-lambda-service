@@ -13,7 +13,7 @@ module "get_object" {
   timeout       = 30
 
   attach_policy_json = var.create
-  policy_json        = var.create ? data.aws_iam_policy_document.hello_world[0].json : null
+  policy_json        = var.create ? data.aws_iam_policy_document.get_object[0].json : null
 
   source_path = [
     {

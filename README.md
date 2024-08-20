@@ -1,5 +1,5 @@
 # terraform-aws-example-lambda-service
-Terraform module to create a service that uses lambda functions to say hello world.
+An example repository to demonstrate building / testing / publishing a terraform module with lambda functions.
 
 ## Usage
 

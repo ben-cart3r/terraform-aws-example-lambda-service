@@ -18,7 +18,7 @@ def test_lambda_returns_object(lambda_context):
         Body=json.dumps({"message": "hello world"}),
     )
 
-    # Invoke the lambda to create the object
+    # Invoke the lambda to retrieve the object
     response = handle_event({}, lambda_context)
     response_body = json.loads(response["body"])
 
