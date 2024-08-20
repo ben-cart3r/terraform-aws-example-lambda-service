@@ -1,0 +1,19 @@
+timeout: 10m
+format: json
+dependency-tree: true
+list-all-pkgs: true
+exit-code: 1
+output: result.json
+severity:
+  - HIGH
+  - CRITICAL
+scan:
+  security-checks:
+    - config
+    - secret
+    - vuln
+vulnerability:
+  type:
+    - os
+    - library
+  ignore-unfixed: true
