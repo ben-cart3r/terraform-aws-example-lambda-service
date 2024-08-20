@@ -42,7 +42,7 @@ data "aws_iam_policy_document" "get_object" {
     ]
 
     resources = [
-      "*"
+      "${aws_s3_bucket.this.arn}/example.json"
     ]
   }
 }
