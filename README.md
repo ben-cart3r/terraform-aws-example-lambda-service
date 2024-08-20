@@ -30,6 +30,7 @@ module "example" {
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_bucket"></a> [bucket](#module\_bucket) | terraform-aws-modules/s3-bucket/aws | n/a |
 | <a name="module_create_object"></a> [create\_object](#module\_create\_object) | terraform-aws-modules/lambda/aws | 7.7.1 |
 | <a name="module_get_object"></a> [get\_object](#module\_get\_object) | terraform-aws-modules/lambda/aws | 7.7.1 |
 
