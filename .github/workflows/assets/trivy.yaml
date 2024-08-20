@@ -1,18 +1,17 @@
 timeout: 10m
-format: json
-dependency-tree: true
+format: table
 list-all-pkgs: true
 exit-code: 1
-output: result.json
 severity:
+  - MEDIUM
   - HIGH
   - CRITICAL
 scan:
-  security-checks:
-    - config
+  scanners:
+    - misconfig
     - secret
     - vuln
-vulnerability:
+pkg:
   type:
     - os
     - library
