@@ -1,7 +1,9 @@
 timeout: 10m
 format: table
+dependency-tree: true
 list-all-pkgs: true
 exit-code: 1
+quiet: true
 severity:
   - MEDIUM
   - HIGH

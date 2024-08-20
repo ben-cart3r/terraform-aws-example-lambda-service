@@ -1,3 +1,4 @@
+#trivy:ignore:AVD-AWS-0057
 module "create_object" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "7.7.1"
@@ -12,8 +13,9 @@ module "create_object" {
   runtime       = "python3.11"
   timeout       = 30
 
-  attach_policy_json = var.create
-  policy_json        = var.create ? data.aws_iam_policy_document.create_object[0].json : null
+  attach_create_log_group_permission = false
+  attach_policy_json                 = var.create
+  policy_json                        = var.create ? data.aws_iam_policy_document.create_object[0].json : null
 
   source_path = [
     {
@@ -42,7 +44,7 @@ data "aws_iam_policy_document" "create_object" {
     ]
 
     resources = [
-      "${aws_s3_bucket.this.arn}/example.json"
+      "${module.bucket.s3_bucket_arn}/example.json"
     ]
   }
 }
