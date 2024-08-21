@@ -4,6 +4,11 @@ from dataclasses import dataclass
 import pytest
 
 
+@pytest.fixture(scope="function")
+def lambda_environment():
+    os.environ["BUCKET"] = "example-bucket"
+
+
 @pytest.fixture
 def lambda_context():
     @dataclass

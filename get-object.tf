@@ -25,6 +25,10 @@ module "get_object" {
     }
   ]
 
+  environment_variables = {
+    BUCKET = module.bucket.s3_bucket_id
+  }
+
   tags = merge(
     var.tags,
     {
