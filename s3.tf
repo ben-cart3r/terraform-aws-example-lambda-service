@@ -5,7 +5,6 @@ module "bucket" {
   create_bucket = var.create
 
   bucket = "${var.name_prefix}-object-store"
-  acl    = "private"
 
   server_side_encryption_configuration = {
     rule = {
