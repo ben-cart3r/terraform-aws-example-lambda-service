@@ -41,14 +41,25 @@ jobs:
       - name: Run TFLint
         run: tflint --minimum-failure-severity=error
 
+  list_functions:
+    runs-on: ubuntu-latest
+    outputs:
+      functions: ${{ steps.dirs.outputs.dirs }}
+    defaults:
+      run:
+        working-directory: ./functions/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - id: dirs
+        run: echo "dirs=$(ls -d */ | jq --raw-input --slurp --compact-output 'split("\n")[:-1]')" >> ${GITHUB_OUTPUT}
+
   python-lint:
     name: Lint python
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        function:
-          - create-object
-          - get-object
+        function: ${{ fromJson(needs.list_functions.outputs.functions) }}
     defaults:
       run:
         working-directory: ./functions/${{ matrix.function }}
@@ -75,9 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        function:
-          - create-object
-          - get-object
+        function: ${{ fromJson(needs.list_functions.outputs.functions) }}
     defaults:
       run:
         working-directory: ./functions/${{ matrix.function }}
