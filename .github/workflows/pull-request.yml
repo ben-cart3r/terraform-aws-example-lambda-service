@@ -60,6 +60,8 @@ jobs:
   python-lint:
     name: Lint python
     runs-on: ubuntu-latest
+    needs:
+      - list_functions
     strategy:
       matrix:
         function: ${{ fromJson(needs.list_functions.outputs.functions) }}
@@ -87,6 +89,8 @@ jobs:
   python-test:
     name: Test python
     runs-on: ubuntu-latest
+    needs:
+      - list_functions
     strategy:
       matrix:
         function: ${{ fromJson(needs.list_functions.outputs.functions) }}
