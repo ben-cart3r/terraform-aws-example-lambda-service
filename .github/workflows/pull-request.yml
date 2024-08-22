@@ -54,7 +54,7 @@ jobs:
       - name: List functions
         id: dirs
         run: echo "dirs=$(ls -d */ | jq --raw-input --slurp --compact-output 'split("\n")[:-1]')" >> ${GITHUB_OUTPUT}
-      - id: Print functions
+      - name: Print functions
         run: echo "${{ steps.dirs.outputs.dirs }}"
 
   python-lint:
